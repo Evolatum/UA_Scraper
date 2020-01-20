@@ -14,7 +14,12 @@ var ArticleSchema = new Schema({
   },
   url: {
     type: String,
+    required: true
+  },
+  pdf: {
+    type: String,
     required: true,
+    index:true,
     unique: true
   },
   comments: {
