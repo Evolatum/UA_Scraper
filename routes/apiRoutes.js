@@ -17,7 +17,10 @@ module.exports = function(app,db) {
             // Empty object and properties to add from each element
             var result = {};
             result.headline = $(this).children("h4").children("a").text();
-            result.summary = $(this).children(".summary").children("p").text();
+            result.summary = $(this).children(".summary").children("p").text().trim();
+
+            // Test if summary contains a line jump, if so, remove anything before it (repeated title)
+            if(/\r?\n/.test(result.summary)) result.summary = result.summary.split(/\r?\n/)[1];
 
             var articleUrl = "https://dnd.wizards.com" + $(this).children("h4").children("a").attr("href");
             if(!/^.+\.(wallpaper)$/.test(articleUrl)){
