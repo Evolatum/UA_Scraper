@@ -23,11 +23,11 @@ var ArticleSchema = new Schema({
     index:true,
     unique: true
   },
-  comments: {
+  comments: [{
     type: Schema.Types.ObjectId,
-    ref: "Comment"
-  }
+    ref: "comment"
+  }]
 });
 
 // Export the model
-module.exports = mongoose.model("Article", ArticleSchema);
+module.exports = mongoose.model("article", ArticleSchema);
