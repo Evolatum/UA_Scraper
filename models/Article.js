@@ -14,7 +14,8 @@ var ArticleSchema = new Schema({
   },
   url: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   comments: {
     type: Schema.Types.ObjectId,
