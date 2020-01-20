@@ -5,9 +5,9 @@ $("body").prepend(`
         Back to portfolio
     </a>
     <span class="navbar-text" id="nameLong">
-        Santiago Martinez Vara Ortiz - 11/12/19
+        Santiago Martinez Vara Ortiz - 24/01/20
     </span>
     <span class="navbar-text" id="nameShort">
-        SMVO - 2019
+        SMVO - 2020
     </span>
 </nav>`);
