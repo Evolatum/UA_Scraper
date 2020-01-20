@@ -68,7 +68,7 @@ module.exports = function(app,db) {
     // Route for grabbing a specific Article by id, and populated with its Comments
     app.get("/articles/:id", function(req, res) {
         db.Article.findOne({ _id: req.params.id })
-        .populate("Comments")
+        .populate("comments")
         .then(function(dbArticle) {
             res.json(dbArticle);
         })
