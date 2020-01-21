@@ -3,7 +3,26 @@
 }
 
 article{
-  margin-top: 2rem;
+  margin-bottom: 1.5rem;
   padding: 1rem;
   border: 1px solid black;
+}
+
+.comment{
+  margin-bottom: 1rem;
+  padding: .5rem;
+  border: 1px solid black;
+}
+
+.delComment{
+  position: relative;
+  font-size: 1.5rem;
+  top:-3rem;
+  left:14.3rem;
+  color:rgb(190, 32, 32);
+}
+
+.delComment:hover,.delComment:active{
+  cursor: pointer;
+  color:rgb(228, 63, 63);
 }
