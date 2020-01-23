@@ -27,6 +27,9 @@ $(document).on("click", ".addCommentBtn", function(event) {
     text: $("#commentText").val()
   }
 
+  if(data.title.length<4 || data.title.length>20 || data.text.length<4 || data.text.length>180)
+    return $('#alertError').modal('show');
+
   $.ajax({
     method: "POST",
     url: "/articles/" + thisId,
@@ -65,6 +68,9 @@ $(document).on("click", ".delComment", function() {
 // Function to papulate comments of an article
 function populateComments(thisId){
   $ref.comments.empty();
+  $([document.documentElement, document.body]).animate({
+    scrollTop: $ref.comments.offset().top - 75
+}, 500);
 
   $.ajax({
     method: "GET",
@@ -72,22 +78,29 @@ function populateComments(thisId){
   })
   .then(function(data) {
     console.log(data.comments);
+    var commentString = (`<div class="jumbotron"><h2>Comments</h2>`);
     if(data.comments){
       for(let comment of data.comments){
-        $ref.comments.append(`<div class="comment"><h4>${comment.title}</h4><span class="delComment" data-article="${thisId}" data-comment="${comment._id}" aria-hidden="true">&times;</span><p>${comment.text}</p></div>`);
+        commentString+=(`<div class="comment">`+
+                                `<span class="delComment" data-article="${thisId}" data-comment="${comment._id}" aria-hidden="true">&times;</span>`+
+                                `<h4>${comment.title}</h4>`+
+                                `<p>${comment.text}</p>`+
+                             `</div>`);
       }
     }
 
-    $ref.comments.append(`<form>
+    commentString+=(`<form>
       <div class="form-group">
-        <label for="commentTitle">Title:</label>
-        <input class="form-control" id="commentTitle" aria-describedby="newCommentTitle">
+        <label for="commentTitle">Comment Title:</label>
+        <input type="text" maxlength="20" class="form-control inputBox" autocomplete="off" id="commentTitle" aria-describedby="newCommentTitle">
       </div>
       <div class="form-group">
-        <label for="commentText">Comment:</label>
-        <input class="form-control" id="commentText" aria-describedby="newCommentText">
+        <label for="commentText">Comment Text:</label>
+        <textarea type="text" maxlength="180" class="form-control inputBox"  autocomplete="off"id="commentText" aria-describedby="newCommentText"></textarea>
       </div>
-      <button type="submit" class="btn btn-primary addCommentBtn" id="comment-${thisId}">Submit</button>
+      <button type="submit" class="btn btn-outline-primary addCommentBtn" id="comment-${thisId}">Submit</button>
     </form>`);
+    commentString+=(`</div>`);
+    $ref.comments.append(commentString);
   });
 }

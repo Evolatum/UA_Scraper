@@ -1,3 +1,8 @@
+body{
+  background-image: url("../assets/warlock-pattern.png");
+  color: #c3e7f1;
+}
+
 .main{
   margin-top:4.5rem;
 }
@@ -5,24 +10,78 @@
 article{
   margin-bottom: 1.5rem;
   padding: 1rem;
-  border: 1px solid black;
+  border: 1px solid #f1dec1;
+  border-radius: 5px;
 }
 
 .comment{
   margin-bottom: 1rem;
   padding: .5rem;
-  border: 1px solid black;
+  border: 1px solid #f1dec1;
+  border-radius: 5px;
+  position:relative;
+  overflow: hidden;
 }
 
 .delComment{
-  position: relative;
+  position: absolute;
   font-size: 1.5rem;
-  top:-3rem;
-  left:14.3rem;
-  color:rgb(190, 32, 32);
+  top:0rem;
+  right:.7rem;
+  color:#9669d7;
 }
 
 .delComment:hover,.delComment:active{
   cursor: pointer;
-  color:rgb(228, 63, 63);
+  color:#f1dec1;
+}
+
+.jumbotron{
+  padding:3rem;
+  background-color: #1b2441;
+}
+
+.btn-outline-primary{
+  margin-top:10px;
+}
+
+.btn-outline-primary:active.btn-outline-primary:hover.btn-outline-primary:focus{
+  margin-top:10px;
+  border-color: transparent;
+  color: #c3e7f1;
+}
+
+.inputBox{
+  background-color: transparent !important;
+  border-color: #9669d7;
+  color: #c3e7f1 !important;
+}
+
+textarea.inputBox{
+  resize: none;
+  height:8.6rem;
+}
+
+.inputBox:hover{
+  border-color: #f1dec1;
+} 
+
+.inputBox:active.inputBox:focus.inputBox:focus::-ms-value.inputBox:disabled.inputBox[readonly]{
+  background-color: transparent;
+  border-color: #9669d7;
+}
+
+select.inputBox:focus::-ms-value {
+  color: #c3e7f1;
+  background-color: transparent;
+}
+
+.modal-content{
+  background-color: #1b2441;
+}
+
+@media (max-width: 767px){
+  .jumbotron{
+    padding:1.3rem 1rem;
+  }
 }

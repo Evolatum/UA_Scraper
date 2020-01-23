@@ -79,6 +79,9 @@ module.exports = function(app,db) {
 
     // Route for adding a Comment to an Article
     app.post("/articles/:id", function(req, res) {
+        if(req.body.title<4 || req.body.title>20 || req.body.text<4 || req.body.text>180)
+            res.send("The comment title must be within 4 and 20 characters, and the comment text must be within 4 and 180 characters.");
+
         db.Comment.create(req.body)
         .then(function(dbComment) {
             return db.Article.findOneAndUpdate({ _id: req.params.id }, { $push:{comments: dbComment._id }}, { new: true });

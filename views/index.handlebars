@@ -1,22 +1,16 @@
 <div class="container main">
-  <div class="jumbotron">
-
+  
     <div class="row">
 
-      <div class="col-8 text-left">
+      <div class="col-md-7 col-12 text-left">
         <div class="jumbotron">
-          <h1>Articles</h1>
             {{#each articles}}
               {{> articles/article-block}}
             {{/each}}
         </div>
       </div>
 
-      <div class="col-4">
-        <div class="jumbotron">
-          <h2>Comments</h2>
-          <div id="commentsSection"></div>
-        </div>
+      <div class="col-md-5 col-12" id="commentsSection">
       </div>
 
     </div>
@@ -31,15 +25,14 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            Please write a burger's name between 1 and 20 characters!
+          <div class="modal-body" id="alertErrorBody"> 
+              The comment title must be within 4 and 20 characters, and the comment text must be within 4 and 180 characters.
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
     </div>
 
-  </div>
 </div>
