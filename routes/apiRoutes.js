@@ -92,12 +92,21 @@ module.exports = function(app,db) {
     });
 
     // Route for deleting a Comment
-    app.delete("/comments/:id", function(req, res) {
-        db.Comment.delete({_id:req.params.id})
-        .then(function(dbComment) {
-            res.send("Comment deleted.");
+    app.delete("/articles/", function(req, res) {
+        console.log(`Deleting comment_id ${req.body.comment_id} from article_id ${req.body.article_id}`);
+        db.Article.update({_id:req.body.article_id},{$pull:{comments:{_id:req.body.comment_id}}})
+        .then(function(dbArticle){
+            console.log(dbArticle);
+            db.Comment.delete({_id:req.body.comment_id})
+            .then(function(dbComment) {
+                console.log(dbComment);
+                res.send("Comment deleted.");
+            })
+            .catch(function(err) {
+                res.send(err);
+            });
         })
-        .catch(function(err) {
+        .catch(function(err){
             res.send(err);
         });
     });
