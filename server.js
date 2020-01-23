@@ -23,7 +23,8 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/UA_Scraper", { useNewUrlParser: true });
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/UA_Scraper";
+mongoose.connect(MONGODB_URI);
 
 // Routes
 require("./routes/apiRoutes")(app,db);
