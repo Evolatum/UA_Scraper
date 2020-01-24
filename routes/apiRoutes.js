@@ -42,7 +42,7 @@ module.exports = function(app,db) {
                                 console.log(dbArticle);
                             })
                             .catch(function(err) {
-                                console.log(err);
+                                console.log(err.errmsg);
                             });
                         }
                     });
@@ -114,3 +114,4 @@ module.exports = function(app,db) {
         });
     });
 };
+

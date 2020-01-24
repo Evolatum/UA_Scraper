@@ -5,7 +5,9 @@ var axios = require("axios");
 // =============================================================
 module.exports = function(app) {
     app.get("/", function(req, res) {
-        axios.get("http://localhost:8000/articles").then(function(data) {
+        var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+        console.log(fullUrl);
+        axios.get(fullUrl+"articles").then(function(data) {
             var hbsObject = {
                 articles: data.data
               };
