@@ -6,7 +6,7 @@ var mongoose = require("mongoose");
 // Require models
 var db = require("./models");
 
-var PORT = 8000;
+var PORT =  process.env.PORT || 8080;
 
 // Initialize Express
 var app = express();
@@ -32,5 +32,5 @@ require("./routes/htmlRoutes")(app);
 
 // Start the server
 app.listen(PORT, function() {
-  console.log("Listening on http://localhost:" + PORT + "/");
+  console.log("Listening on " + PORT);
 });
